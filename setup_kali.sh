@@ -103,6 +103,7 @@ echo "[*] Setting up common aliases..."
 echo "alias updateme='apt update&&apt list --upgradeable'" >> ~/.bash_aliases
 echo "alias upgrademe='apt full-upgrade -y'" >> ~/.bash_aliases
 echo "alias sspt='searchsploit'" >> ~/.bash_aliases
+source ~/.bashrc
 
 echo -e "\n\n"
 echo "[*] All done!"
