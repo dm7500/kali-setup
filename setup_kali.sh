@@ -31,8 +31,8 @@ echo "[*] Cloning and installing the BrashEndeavours/hotwax repo..."
 cd ~
 git clone https://github.com/BrashEndeavours/hotwax .hotwax
 cd .hotwax
-mv tasks/install_custom_sabma.yml tasks/install_custom_samba.old
-cp ~/root/kali-setup/install_custom_samba.yml tasks/install_custom_samba.yml
+mv tasks/install_custom_samba.yml tasks/install_custom_samba.old
+cp ~/kali-setup/install_custom_samba.yml tasks/install_custom_samba.yml
 ansible-playbook playbook.yml
 
 echo -e "\n\n"
