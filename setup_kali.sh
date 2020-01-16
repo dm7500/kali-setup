@@ -23,7 +23,7 @@ apt full-upgrade -y
 
 echo -e "\n\n"
 echo "[*] Installing pre-reqs..."
-apt install -y git ansible python-pip python3-pip python-ldap golang-go python-dnspython libpcap-dev libssl-dev libnetfilter-queue-dev
+apt install -y git ansible python-pip python3-pip golang-go python-dnspython libpcap-dev libssl-dev libnetfilter-queue-dev
 pip install ldap3
 
 echo -e "\n\n"
@@ -32,8 +32,7 @@ cd ~
 git clone https://github.com/BrashEndeavours/hotwax .hotwax
 cd .hotwax
 mv tasks/install_custom_sabma.yml tasks/install_custom_samba.old
-script_dir=dirname "$0"
-cp $script_dir/install_custom_sabma.yml tasks/install_custom_sabma.yml
+cp ~/root/kali-setup/install_custom_samba.yml tasks/install_custom_samba.yml
 ansible-playbook playbook.yml
 
 echo -e "\n\n"
@@ -55,7 +54,7 @@ cd /opt
 git clone https://github.com/guelfoweb/knock.git
 cd knock
 python setup.py install
-echo "alias knockpy='python /opt/knock/knockpy/knockpy.py'" >> ~/.bash_aliases
+#echo "alias knockpy='python /opt/knock/knockpy/knockpy.py'" >> ~/.bash_aliases
 
 echo -e "\n\n"
 echo "[*] Cloning and setting alias for repo..."
