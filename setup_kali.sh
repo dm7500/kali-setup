@@ -49,7 +49,7 @@ git clone https://github.com/maurosoria/dirsearch.git
 echo "alias dirsearch='python3 /opt/dirsearch/dirsearch.py'" >> ~/.bash_aliases
 
 echo -e "\n\n"
-echo "[*] Cloning and setting up guelfoweb/knock repo and alias..."
+echo "[*] Cloning and setting up guelfoweb/knock repo..."
 cd /opt
 git clone https://github.com/guelfoweb/knock.git
 cd knock
@@ -57,7 +57,7 @@ python setup.py install
 #echo "alias knockpy='python /opt/knock/knockpy/knockpy.py'" >> ~/.bash_aliases
 
 echo -e "\n\n"
-echo "[*] Cloning and setting alias for repo..."
+echo "[*] Cloning and setting alias for aboul3la/Sublist3r repo..."
 cd /opt
 git clone https://github.com/aboul3la/Sublist3r.git sublister
 cd sublister
