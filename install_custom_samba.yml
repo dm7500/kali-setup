@@ -1,0 +1,254 @@
+---
+# From: https://forums.offensive-security.com/showthread.php?12943-Found-solution-to-enum4linux-rpcclient-problem-NT_STATUS_INVALID_PARAMETER&p=73263
+#
+# It seems that the more recent smbclient/rpcclient tools enforce usage of 
+#  security signatures during SMB session negotiation. I compared the traffic
+#  from rpcclient with the one generated from nmap smb enumeration scripts.
+# The nmap enumeration scripts worked, i.e. were able to setup a session. 
+# I saw that rpcclient sets the 'Security Signatures Required' flag whereas 
+#  nmap does not. If you have an idea why this might prevent session setup, 
+# I would be happy about a message.
+# Anyway, you can fix this by downloading and compiling an older version of samba:
+# https://github.com/samba-team/samba/archive/samba-4.5.16.tar.gz
+
+- name: Install Samba compilation prerequisites
+  apt:
+    name: "{{ packages }}"
+    update_cache: yes
+    state: present
+  vars:
+    packages:
+    - acl
+    - apt-utils
+    - attr
+    - autoconf
+    - bind9utils
+    - binutils
+    - bison
+    - build-essential
+    - curl
+    - debhelper
+    - dnsutils
+    - docbook-xml
+    - docbook-xsl
+    - flex
+    - gcc
+    - gdb
+    - git
+    - glusterfs-common
+    - gzip
+    - heimdal-clients
+    - heimdal-dev
+    - heimdal-kcm
+    - heimdal-multidev
+    - hostname
+    - htop
+    - krb5-config
+    - lcov
+    - libacl1-dev
+    - libaio-dev
+    - libarchive-dev
+    - libattr1-dev
+    - libavahi-client-dev
+    - libavahi-common-dev
+    - libblkid-dev
+    - libbsd-dev
+    - libcap-dev
+    - libcups2-dev
+    - libdbus-1-dev
+    - libfam-dev
+    - libgcrypt20-dev
+    - libglib2.0-dev
+    - libglusterfs-dev
+    - libgnutls28-dev
+    - libgpgme-dev
+    - libgssapi3-heimdal
+    - libicu-dev
+    - libjansson-dev
+    - libjs-jquery
+    - libjson-perl
+    - libkadm5clnt7-heimdal
+    - libkadm5srv8-heimdal
+    - libkafs0-heimdal
+    - libkdc2-heimdal
+    - libkrb5-26-heimdal
+    - libldap2-dev
+    - libldb-dev
+    - liblmdb-dev
+    - liblttng-ust-dev
+    - libmd-dev
+    - libmhash-dev
+    - libncurses5-dev
+    - libotp0-heimdal
+    - libpam0g-dev
+    - libparse-yapp-perl
+    - libpcap-dev
+    - libpopt-dev
+    - libreadline-gplv2-dev
+    - libsl0-heimdal
+    - libssl1.0-dev
+    - libsystemd-dev
+    - libtalloc-dev
+    - libtasn1-6-dev
+    - libtasn1-bin
+    - libtdb-dev
+    - libtevent-dev
+    - libunwind-dev
+    - lmdb-utils
+    - locales
+    - lsb-release
+    - make
+    - mawk
+    - mingw-w64
+    - nettle-dev
+    - patch
+    - perl
+    - perl-modules
+    - pkg-config
+    - procps
+    - psmisc
+    - python-crypto
+    - python-dbg
+    - python-dev
+    - python-dnspython
+    - python3-gnupg
+    - python-iso8601
+    - python-markdown
+    - python-pexpect
+    - python3
+    - python3-crypto
+    - python3-dbg
+    - python3-dev
+    - python3-dnspython
+    - python3-gnupg
+    - python3-iso8601
+    - python3-markdown
+    - python3-matplotlib
+    - python3-pexpect
+    - rsync
+    - samba
+    - sed
+    - sudo
+    - tar
+    - tree
+    - uuid-dev
+    - xfslibs-dev
+    - xsltproc
+    - zlib1g-dev
+    
+- name: Ensure downloads directory exists (Required by travis)
+  file:
+    path: /root/Downloads
+    state: directory
+    mode: '0755'
+    owner: root
+    group: root
+
+- name: Download samba
+  get_url:
+    url: https://github.com/samba-team/samba/archive/samba-4.10.8.tar.gz
+    validate_certs: no
+    dest: /root/Downloads/samba-samba-4.10.8.tar.gz
+    mode: 333
+    force: no
+    owner: root
+  register: samba_download
+
+- name: Remove old samba build
+  command: rm -rf samba-4.10.8
+  args:
+    chdir: /root/Downloads
+    removes: /root/Downloads/samba-4.10.8/
+  when: samba_download.changed
+
+- name: Extract samba-4.10.8.tar.gz
+  command: tar xzvf samba-samba-4.10.8.tar.gz
+  args:
+    chdir: /root/Downloads
+    creates: /root/Downloads/samba-samba-4.10.8/
+  when: samba_download.changed
+
+- name: Move Samba 4.10.8
+  command: mv samba-samba-4.10.8 samba-4.10.8
+  args:
+    chdir: /root/Downloads
+    creates: /root/Downloads/samba-4.10.8/
+  when: samba_download.changed
+
+- name: Download client.c patch for samba-4.10.8
+  get_url: 
+    url: https://raw.githubusercontent.com/BrashEndeavours/samba/master/samba-4.10.8.client_c.patch
+    validate_certs: no
+    dest: /root/Downloads/samba-4.10.8/
+    mode: 333
+    owner: root
+  when: samba_download.changed
+
+- name: Apply clientc patch for samba-4.10.8
+  command: patch source3/client/client.c samba-4.10.8.client_c.patch
+  args:
+    chdir: /root/Downloads/samba-4.10.8/
+  when: samba_download.changed
+
+- name: Download clidfs.c patch for samba-4.10.8
+  get_url: 
+    url: https://raw.githubusercontent.com/BrashEndeavours/samba/master/samba-4.10.8.clidfs_c.patch
+    validate_certs: no
+    dest: /root/Downloads/samba-4.10.8/
+    mode: 333
+    owner: root
+  when: samba_download.changed
+
+- name: Apply clidfs.c for samba-4.10.8
+  command: patch source3/libsmb/clidfs.c samba-4.10.8.clidfs_c.patch
+  args:
+    chdir: /root/Downloads/samba-4.10.8/
+  when: samba_download.changed
+
+- name: Configure samba-4.10.8
+  command: ./configure --prefix=/usr/local --exec-prefix=/usr/local --sysconfdir=/etc --enable-fhs --localstatedir=/var --with-piddir=/run/samba
+  args:
+    chdir: /root/Downloads/samba-4.10.8/
+  when: samba_download.changed
+
+- name: Make samba-4.10.8
+  command: make
+  args:
+    chdir: /root/Downloads/samba-4.10.8/
+  when: samba_download.changed
+
+- name: Install samba-4.10.8
+  command: make install
+  args:
+    chdir: /root/Downloads/samba-4.10.8/
+  when: samba_download.changed
+
+- name: Alter /etc/samba/smb.conf (spnego)
+  lineinfile:
+    path: /etc/samba/smb.conf
+    regexp: '^\s*?client use spnego'
+    insertafter: '^\[global\]'
+    line: '   client use spnego = No'
+
+- name: Alter /etc/samba/smb.conf (client min protocol)
+  lineinfile:
+    path: /etc/samba/smb.conf
+    regexp: '^\s*?client min protocol'
+    insertafter: '^\[global\]'
+    line: '   client min protocol = NT1'
+
+- name: Alter /etc/samba/smb.conf (client max protocol)
+  lineinfile:
+    path: /etc/samba/smb.conf
+    regexp: '^\s*?client max protocol'
+    insertafter: '^\[global\]'
+    line: '   client max protocol = SMB3_11'
+
+- name: Remove /etc/ld.so.conf.d/libc.conf for pth-* compat
+  file:
+    path: /etc/ld.so.conf.d/libc.conf
+    state: absent
+
+- name: Rebuild library cache ldconfig
+  command: ldconfig
+    
