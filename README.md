@@ -11,7 +11,6 @@ chmod +x setup_kali.sh
 ```
 
 ## Tools installed:
-
 - [hotwax](https://github.com/BrashEndeavours/hotwax)
 - [nullinux](https://github.com/m8r0wn/nullinux)
 - [dirsearch](https://github.com/maurosoria/dirsearch)
@@ -31,3 +30,7 @@ chmod +x setup_kali.sh
 - `kerbrute='/opt/kerbrute/kerbrute_linux_amd64'`
 - `sublister='python /opt/sublister/sublist3r.py'`
 - `dirsearch='python3 /opt/dirsearch/dirsearch.py'`
+
+## Misc items:
+- Unzips `rockyou.txt` file
+- Downloads and extracts `1aNormusWL` and `KippoWordlist` wordlists
