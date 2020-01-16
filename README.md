@@ -12,6 +12,29 @@ chmod +x setup_kali.sh
 
 ## Tools installed:
 - [hotwax](https://github.com/BrashEndeavours/hotwax)
+  - Arjun
+  - AutoRecon
+  - BloodHound
+  - chisel
+  - evil-winrm
+  - gobuster
+  - LinEnum
+  - nishang
+  - One-Lin3r
+  - OSCP Exam Report Template
+  - Powerless
+  - PowerSploit
+  - proxychains-ng
+  - pspy
+  - SecLists
+  - sherlock
+  - sshuttle
+  - webshell
+  - Windows PHP Reverse Shell
+  - XSStrike
+  - zauberfeder
+  - Fixes borked Kali install of Samba
+  - Re-installs enum4linux to work with fixed Samba install
 - [nullinux](https://github.com/m8r0wn/nullinux)
 - [dirsearch](https://github.com/maurosoria/dirsearch)
 - [knock](https://github.com/guelfoweb/knock)
