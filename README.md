@@ -37,6 +37,7 @@ chmod +x setup_kali.sh
   - Re-installs enum4linux to work with fixed Samba install
 - [nullinux](https://github.com/m8r0wn/nullinux)
 - [dirsearch](https://github.com/maurosoria/dirsearch)
+- [linux-smart-enumeration](https://github.com/diego-treitos/linux-smart-enumeration)
 - [knock](https://github.com/guelfoweb/knock)
 - [Sublist3r](https://github.com/aboul3la/Sublist3r)
 - [thc-ipv6](https://github.com/vanhauser-thc/thc-ipv6)

@@ -45,6 +45,11 @@ cd nullinux
 bash setup.sh
 
 echo -e "\n\n"
+cd /opt
+echo "[*] Cloning the diego-treitos/linux-smart-enumeration repo..."
+git clone https://github.com/diego-treitos/linux-smart-enumeration.git lse
+
+echo -e "\n\n"
 echo "[*] Cloning and setting up the maurosoria/dirsearch repo, and creating alias..."
 cd /opt
 git clone https://github.com/maurosoria/dirsearch.git
