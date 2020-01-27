@@ -45,6 +45,7 @@ chmod +x setup_kali.sh
 - [windapsearch](https://github.com/ropnop/windapsearch)
 - [AutoBlue-MS17-010](https://github.com/3ndG4me/AutoBlue-MS17-010)
 - [tnscmd10g](https://tools.kali.org/vulnerability-analysis/tnscmd10g)
+- [OScanner](http://www.cqure.net/wp/tools/database/oscanner/)
 
 ## Aliases set:
 - `sspt='searchsploit'`
