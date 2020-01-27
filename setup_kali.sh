@@ -23,7 +23,7 @@ apt full-upgrade -y
 
 echo -e "\n\n"
 echo "[*] Installing pre-reqs..."
-apt install -y git ansible python-pip python3-pip golang-go python-dnspython libpcap-dev libssl-dev libnetfilter-queue-dev
+apt install -y git ansible python-pip python3-pip golang-go python-dnspython libpcap-dev libssl-dev libnetfilter-queue-dev tnscmd10g
 pip install ldap3
 
 echo -e "\n\n"
