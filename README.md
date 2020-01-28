@@ -46,6 +46,7 @@ chmod +x setup_kali.sh
 - [AutoBlue-MS17-010](https://github.com/3ndG4me/AutoBlue-MS17-010)
 - [tnscmd10g](https://tools.kali.org/vulnerability-analysis/tnscmd10g)
 - [OScanner](http://www.cqure.net/wp/tools/database/oscanner/)
+- [flameshot](https://flameshot.js.org/#/)
 
 ## Aliases set:
 - `sspt='searchsploit'`
