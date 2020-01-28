@@ -11,24 +11,24 @@ echo "      1. You've setup VBox Tools/VMWare tools if running in a VM"
 echo "      2. You're running as root, either by login or sudo"
 read -p "Press any key to continue with setup..."
 
-if [[ $(id -u) != 0 ]]; then
-	echo -e "\n[!] Setup script needs to run as root!\n\n"
-	exit 0
-fi
+# if [[ $(id -u) != 0 ]]; then
+# 	echo -e "\n[!] Setup script needs to run as root!\n\n"
+# 	exit 0
+# fi
 
 echo -e "\n\n"
 echo "[*] Updating and upgrading system before starting..."
-apt update -y
-apt full-upgrade -y
+sudo apt update -y
+sudo apt full-upgrade -y
 
 echo -e "\n\n"
 echo "[*] Installing pre-reqs..."
-apt install -y git ansible python-pip python3-pip golang-go python-dnspython libpcap-dev libssl-dev libnetfilter-queue-dev
+sudo apt install -y git ansible python-pip python3-pip golang-go python-dnspython libpcap-dev libssl-dev libnetfilter-queue-dev
 pip install ldap3
 
 echo -e "\n\n"
 echo "[*] Installing tools from Kali repos..."
-apt install oscanner tnscmd10g flameshot
+sudo apt install oscanner tnscmd10g flameshot
 
 echo -e "\n\n"
 echo "[*] Cloning and installing the BrashEndeavours/hotwax repo..."
