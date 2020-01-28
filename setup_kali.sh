@@ -35,7 +35,7 @@ sudo apt install oscanner tnscmd10g flameshot
 
 echo -e "\n\n"
 echo "[*] Setting ownership of /opt folder for GitHub repos..."
-chown -R $username:$username /opt
+sudo chown -R $username:$username /opt
 
 echo -e "\n\n"
 echo "[*] Cloning and installing the BrashEndeavours/hotwax repo..."
