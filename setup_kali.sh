@@ -16,6 +16,9 @@ read -p "Press any key to continue with setup..."
 # 	exit 0
 # fi
 
+echo "[*] Please provide the username you want to apply as owner of the tools in /opt..."
+read -p 'Username: ' username
+
 echo -e "\n\n"
 echo "[*] Updating and upgrading system before starting..."
 sudo apt update -y
@@ -29,6 +32,10 @@ pip install ldap3
 echo -e "\n\n"
 echo "[*] Installing tools from Kali repos..."
 sudo apt install oscanner tnscmd10g flameshot
+
+echo -e "\n\n"
+echo "[*] Setting ownership of /opt folder for GitHub repos..."
+chown -R $username:$username /opt
 
 echo -e "\n\n"
 echo "[*] Cloning and installing the BrashEndeavours/hotwax repo..."
