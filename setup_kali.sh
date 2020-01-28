@@ -40,7 +40,7 @@ git clone https://github.com/BrashEndeavours/hotwax .hotwax
 cd .hotwax
 # Fixes issue with python-gnupg install in hotwax #
 mv tasks/install_custom_samba.yml tasks/install_custom_samba.old
-cp ~/kali-setup/install_custom_samba.yml tasks/install_custom_samba.yml
+cp /home/$username/kali-setup/install_custom_samba.yml tasks/install_custom_samba.yml
 #
 ansible-playbook playbook.yml
 
@@ -118,8 +118,8 @@ chown -hR $username:$username /opt
 
 echo -e "\n\n"
 echo "[*] Setting up common aliases..."
-echo "alias updateme='apt update&&apt list --upgradeable'" >> /home/$username/.bash_aliases
-echo "alias upgrademe='apt full-upgrade -y'" >> /home/$username/.bash_aliases
+echo "alias updateme='sudo apt update&&apt list --upgradeable'" >> /home/$username/.bash_aliases
+echo "alias upgrademe='sudo apt full-upgrade -y'" >> /home/$username/.bash_aliases
 echo "alias sspt='searchsploit'" >> /home/$username/.bash_aliases
 source /home/$username/.bashrc
 
