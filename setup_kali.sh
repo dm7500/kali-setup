@@ -31,7 +31,7 @@ pip install ldap3
 
 echo -e "\n\n"
 echo "[*] Installing tools from Kali repos..."
-apt install oscanner tnscmd10g flameshot
+apt install oscanner tnscmd10g flameshot kate
 
 echo -e "\n\n"
 echo "[*] Cloning and installing the BrashEndeavours/hotwax repo..."
