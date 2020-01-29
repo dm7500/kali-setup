@@ -48,6 +48,7 @@ sudo ./setup_kali.sh #sudo is needed from versions > 2019.4
 - [tnscmd10g](https://tools.kali.org/vulnerability-analysis/tnscmd10g)
 - [OScanner](http://www.cqure.net/wp/tools/database/oscanner/)
 - [flameshot](https://flameshot.js.org/#/)
+- [kate](https://kate-editor.org/)
 
 ## Aliases set:
 - `sspt='searchsploit'`
@@ -66,3 +67,4 @@ sudo ./setup_kali.sh #sudo is needed from versions > 2019.4
 - Downloads and extracts `1aNormusWL` and `KippoWordlist` wordlists
 - Request name of user, and assigns them as owner of all items in `/opt`
 - Adds specified user to `vboxsf` group, for proper access to Vbox shared folders.
+- Installs VS Code from `.deb` file.

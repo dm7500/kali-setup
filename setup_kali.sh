@@ -121,6 +121,12 @@ unzip 1aNormusWL.zip
 rm 1aNormusWL.zip
 
 echo -e "\n\n"
+echo "[*] Grabbing and installing VS Code..."
+cd /home/$username/Downloads
+wget https://go.microsoft.com/fwlink/?LinkID=760868 -O code_install.deb
+dpkg -i code_install.deb
+
+echo -e "\n\n"
 echo "[*] Setting ownership of /opt folder for GitHub repos..."
 chown -hR $username:$username /opt
 
