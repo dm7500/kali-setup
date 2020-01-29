@@ -44,6 +44,7 @@ chmod +x setup_kali.sh
 - [kerbrute](https://github.com/ropnop/kerbrute)
 - [windapsearch](https://github.com/ropnop/windapsearch)
 - [AutoBlue-MS17-010](https://github.com/3ndG4me/AutoBlue-MS17-010)
+- [spiderfoot](https://github.com/smicallef/spiderfoot.git)
 - [tnscmd10g](https://tools.kali.org/vulnerability-analysis/tnscmd10g)
 - [OScanner](http://www.cqure.net/wp/tools/database/oscanner/)
 - [flameshot](https://flameshot.js.org/#/)
@@ -57,6 +58,7 @@ chmod +x setup_kali.sh
 - `kerbrute='/opt/kerbrute/kerbrute_linux_amd64'`
 - `sublister='python /opt/sublister/sublist3r.py'`
 - `dirsearch='python3 /opt/dirsearch/dirsearch.py'`
+- `spiderfoot='python3 /opt/spiderfoot/sf.py`
 
 ## Misc items:
 - Unzips `rockyou.txt` file

@@ -104,6 +104,14 @@ git clone https://github.com/3ndG4me/AutoBlue-MS17-010.git autoblue
 echo "alias goblue='cd /opt/autoblue'" >> /home/$username/.bash_aliases
 
 echo -e "\n\n"
+echo "[*] Cloning the smicallef/spiderfoot repo and setting alias..."
+cd /opt
+git clone https://github.com/smicallef/spiderfoot.git
+cd spiderfoot
+pip3 install -r requirements.txt
+echo "alias spiderfoot='python3 /opt/spiderfoot/sf.py'" >> /home/$username/.bash_aliases
+
+echo -e "\n\n"
 echo "[*] Extracting rockyou and grabbing some more wordlists..."
 cd /usr/share/wordlists
 gunzip -d /usr/share/wordlists/rockyou.txt.gz
