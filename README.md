@@ -7,7 +7,7 @@ A quick script I made to get a new Kali VM (or machine) configured with all my p
 git clone https://github.com/dm7500/kali-setup
 cd kali-setup
 chmod +x setup_kali.sh
-./setup_kali.sh
+sudo ./setup_kali.sh #sudo is needed from versions > 2019.4 
 ```
 
 ## Tools installed:
@@ -51,15 +51,18 @@ chmod +x setup_kali.sh
 
 ## Aliases set:
 - `sspt='searchsploit'`
-- `updateme='apt update&&apt list --upgradeable'`
-- `upgrademe='apt full-upgrade -y'`
+- `updateme='sudo apt update&&apt list --upgradeable'`
+- `upgrademe='sudo apt full-upgrade -y'`
 - `goblue='cd /opt/autoblue'`
 - `windapsearch='python3 /opt/windapsearch/windapsearch.py'`
 - `kerbrute='/opt/kerbrute/kerbrute_linux_amd64'`
 - `sublister='python /opt/sublister/sublist3r.py'`
 - `dirsearch='python3 /opt/dirsearch/dirsearch.py'`
-- `spiderfoot='python3 /opt/spiderfoot/sf.py`
+- `sfscan='python3 /opt/spiderfoot/sf.py`
+- `sfweb='python3 /opt/spiderfoot/sf.py -l 127.0.0.1'`
 
 ## Misc items:
-- Unzips `rockyou.txt` file
+- Unzips existing `rockyou.txt` file
 - Downloads and extracts `1aNormusWL` and `KippoWordlist` wordlists
+- Request name of user, and assigns them as owner of all items in `/opt`
+- Adds specified user to `vboxsf` group, for proper access to Vbox shared folders.

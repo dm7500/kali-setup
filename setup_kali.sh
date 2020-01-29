@@ -16,7 +16,7 @@ if [[ $(id -u) != 0 ]]; then
 	exit 0
 fi
 
-echo "[*] Please provide the username you want to apply as owner of the tools in /opt..."
+echo "[*] Please provide the username of the owner of this VM..."
 read -p 'Username: ' username
 
 echo -e "\n\n"
@@ -68,7 +68,6 @@ cd /opt
 git clone https://github.com/guelfoweb/knock.git
 cd knock
 python setup.py install
-#echo "alias knockpy='python /opt/knock/knockpy/knockpy.py'" >> /home/$username/.bash_aliases
 
 echo -e "\n\n"
 echo "[*] Cloning and setting alias for aboul3la/Sublist3r repo..."
@@ -109,7 +108,8 @@ cd /opt
 git clone https://github.com/smicallef/spiderfoot.git
 cd spiderfoot
 pip3 install -r requirements.txt
-echo "alias spiderfoot='python3 /opt/spiderfoot/sf.py'" >> /home/$username/.bash_aliases
+echo "alias sfweb='python3 /opt/spiderfoot/sf.py -l 127.0.0.1'" >> /home/$username/.bash_aliases
+echo "alias sfscan='python3 /opt/spiderfoot/sf.py'" >> /home/$username/.bash_aliases
 
 echo -e "\n\n"
 echo "[*] Extracting rockyou and grabbing some more wordlists..."
@@ -125,14 +125,25 @@ echo "[*] Setting ownership of /opt folder for GitHub repos..."
 chown -hR $username:$username /opt
 
 echo -e "\n\n"
+echo "[*] Setting user as member of vboxsf, for access to Vbox shared folder..."
+adduser $username vboxsf
+echo "[!] User $username added to vboxsf group. You will have to reboot the system after the script runs, for this to take effect."
+read -p "Press any key to continue..."
+
+echo -e "\n\n"
 echo "[*] Setting up common aliases..."
 echo "alias updateme='sudo apt update&&apt list --upgradeable'" >> /home/$username/.bash_aliases
 echo "alias upgrademe='sudo apt full-upgrade -y'" >> /home/$username/.bash_aliases
 echo "alias sspt='searchsploit'" >> /home/$username/.bash_aliases
-source /home/$username/.bashrc
 
 echo -e "\n\n"
-echo "[*] All done!"
+echo "[*] Adding symlinks for wordlists and seclists folders to home directory..."
+cd /home/$username
+ln -s /usr/share/wordlists wordlists
+ln -s /usr/share/seclists seclists
+
+echo -e "\n\n"
+echo "[*] All done! Be sure to reboot the VM before using."
 exit 0
 
 
