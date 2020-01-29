@@ -31,7 +31,7 @@ pip install ldap3
 
 echo -e "\n\n"
 echo "[*] Installing tools from Kali repos..."
-apt install oscanner tnscmd10g flameshot
+apt install oscanner tnscmd10g flameshot kate
 
 echo -e "\n\n"
 echo "[*] Cloning and installing the BrashEndeavours/hotwax repo..."
@@ -135,6 +135,11 @@ echo "[*] Setting up common aliases..."
 echo "alias updateme='sudo apt update&&apt list --upgradeable'" >> /home/$username/.bash_aliases
 echo "alias upgrademe='sudo apt full-upgrade -y'" >> /home/$username/.bash_aliases
 echo "alias sspt='searchsploit'" >> /home/$username/.bash_aliases
+echo "alias arjun='python3 /opt/arjun/arjun.py'" >> /home/$username/.bash_aliases
+echo "alias autorecon='python3 /opt/autorecon/autorecon.py'" >> /home/$username/.bash_aliases
+echo "alias evil-winrm='ruby /opt/evil-winrm/evil-winrm.rb'" >> /home/$username/.bash_aliases
+echo "alias sherlock='python3 /opt/sherlock/sherlock.py'" >> /home/$username/.bash_aliases
+echo "alias xsstrike='python3 /opt/xsstrike/xsstrike.py'" >> /home/$username/.bash_aliases
 
 echo -e "\n\n"
 echo "[*] Adding symlinks for wordlists and seclists folders to home directory..."

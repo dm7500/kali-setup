@@ -48,6 +48,7 @@ sudo ./setup_kali.sh #sudo is needed from versions > 2019.4
 - [tnscmd10g](https://tools.kali.org/vulnerability-analysis/tnscmd10g)
 - [OScanner](http://www.cqure.net/wp/tools/database/oscanner/)
 - [flameshot](https://flameshot.js.org/#/)
+- [kate](https://kate-editor.org/)
 
 ## Aliases set:
 - `sspt='searchsploit'`
