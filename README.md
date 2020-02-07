@@ -49,6 +49,7 @@ sudo ./setup_kali.sh #sudo is needed from versions > 2019.4
 - [OScanner](http://www.cqure.net/wp/tools/database/oscanner/)
 - [flameshot](https://flameshot.js.org/#/)
 - [kate](https://kate-editor.org/)
+- Firefox ESR
 
 ## Aliases set:
 - `sspt='searchsploit'`
