@@ -50,6 +50,7 @@ sudo ./setup_kali.sh #sudo is needed from versions > 2019.4
 - [flameshot](https://flameshot.js.org/#/)
 - [kate](https://kate-editor.org/)
 - Firefox ESR
+- Ark
 
 ## Aliases set:
 - `sspt='searchsploit'`
