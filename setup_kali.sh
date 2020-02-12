@@ -112,6 +112,14 @@ echo "alias sfweb='python3 /opt/spiderfoot/sf.py -l 127.0.0.1'" >> /home/$userna
 echo "alias sfscan='python3 /opt/spiderfoot/sf.py'" >> /home/$username/.bash_aliases
 
 echo -e "\n\n"
+echo "[*] Cloning the immunIT/drupwn repo..."
+cd /opt
+git clone https://github.com/immunIT/drupwn.git
+cd drupwn
+python3 setup.py install
+pip3 install 'prompt_toolkit<=2.0.7'
+
+echo -e "\n\n"
 echo "[*] Extracting rockyou and grabbing some more wordlists..."
 cd /usr/share/wordlists
 gunzip -d /usr/share/wordlists/rockyou.txt.gz

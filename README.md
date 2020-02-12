@@ -51,6 +51,7 @@ sudo ./setup_kali.sh #sudo is needed from versions > 2019.4
 - [kate](https://kate-editor.org/)
 - Firefox ESR
 - Ark
+- [drupwn](https://github.com/immunIT/drupwn)
 
 ## Aliases set:
 - `sspt='searchsploit'`
