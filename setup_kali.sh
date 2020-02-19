@@ -31,7 +31,7 @@ pip install ldap3
 
 echo -e "\n\n"
 echo "[*] Installing tools from Kali repos..."
-apt install oscanner tnscmd10g flameshot kate firefox-esr ark
+apt install oscanner tnscmd10g flameshot kate firefox-esr ark powershell
 
 echo -e "\n\n"
 echo "[*] Cloning and installing the BrashEndeavours/hotwax repo..."
@@ -118,6 +118,10 @@ git clone https://github.com/immunIT/drupwn.git
 cd drupwn
 python3 setup.py install
 pip3 install 'prompt_toolkit<=2.0.7'
+
+echo -e "\n\n"
+echo "[*] Installing updog with pip3..."
+pip3 install updog
 
 echo -e "\n\n"
 echo "[*] Extracting rockyou and grabbing some more wordlists..."

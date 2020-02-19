@@ -52,6 +52,8 @@ sudo ./setup_kali.sh #sudo is needed from versions > 2019.4
 - Firefox ESR
 - Ark
 - [drupwn](https://github.com/immunIT/drupwn)
+- [Updog](https://github.com/sc0tfree/updog)
+- [Powershell for Kali](https://www.kali.org/tutorials/installing-powershell-on-kali-linux/)
 
 ## Aliases set:
 - `sspt='searchsploit'`
