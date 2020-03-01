@@ -54,6 +54,7 @@ sudo ./setup_kali.sh #sudo is needed from versions > 2019.4
 - [drupwn](https://github.com/immunIT/drupwn)
 - [Updog](https://github.com/sc0tfree/updog)
 - [Powershell for Kali](https://www.kali.org/tutorials/installing-powershell-on-kali-linux/)
+- [OSCP Report Template (Markdown)](https://github.com/noraj/OSCP-Exam-Report-Template-Markdown)
 
 ## Aliases set:
 - `sspt='searchsploit'`

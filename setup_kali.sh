@@ -38,10 +38,6 @@ echo "[*] Cloning and installing the BrashEndeavours/hotwax repo..."
 cd /home/$username
 git clone https://github.com/BrashEndeavours/hotwax .hotwax
 cd .hotwax
-# Fixes issue with python-gnupg install in hotwax #
-mv tasks/install_custom_samba.yml tasks/install_custom_samba.old
-cp /home/$username/kali-setup/install_custom_samba.yml tasks/install_custom_samba.yml
-#
 ansible-playbook playbook.yml
 
 echo -e "\n\n"
@@ -131,6 +127,11 @@ wget -nc http://www.tekdefense.com/downloads/wordlists/1aNormusWL.zip
 wget -nc http://www.tekdefense.com/downloads/wordlists/KippoWordlist.txt
 unzip 1aNormusWL.zip
 rm 1aNormusWL.zip
+
+echo -e "\n\n"
+echo "[*] Cloning the OSCP Report (Markdown) repo..."
+cd /opt
+git clone https://github.com/noraj/OSCP-Exam-Report-Template-Markdown.git oscp_report
 
 echo -e "\n\n"
 echo "[*] Grabbing and installing VS Code..."
