@@ -26,7 +26,7 @@ apt full-upgrade -y
 
 echo -e "\n\n"
 echo "[*] Installing pre-reqs..."
-apt install -y git ansible python-pip python3-pip golang-go python-dnspython libpcap-dev libssl-dev libnetfilter-queue-dev
+apt install -y git ansible python-pip python3-pip golang-go python-dnspython libpcap-dev libssl-dev libnetfilter-queue-dev pandoc texlive-base p7zip
 pip install ldap3
 
 echo -e "\n\n"
@@ -132,6 +132,16 @@ echo -e "\n\n"
 echo "[*] Cloning the OSCP Report (Markdown) repo..."
 cd /opt
 git clone https://github.com/noraj/OSCP-Exam-Report-Template-Markdown.git oscp_report
+mkdir -p /home/$username/.pandoc/templates
+cd /home/$username/.pandoc/templates
+mkdir temp_download
+cd temp_download
+wget https://github.com/Wandmalfarbe/pandoc-latex-template/releases/download/v1.4.0/Eisvogel-1.4.0.zip
+unzip Eisvogel-1.4.0.zip
+cp eisvogel.tex /home/$username/.pandoc/templates/eisvogel.latex
+cd ..
+rm -r temp_download
+
 
 echo -e "\n\n"
 echo "[*] Grabbing and installing VS Code..."
@@ -159,6 +169,7 @@ echo "alias autorecon='python3 /opt/autorecon/autorecon.py'" >> /home/$username/
 echo "alias evil-winrm='ruby /opt/evil-winrm/evil-winrm.rb'" >> /home/$username/.bash_aliases
 echo "alias sherlock='python3 /opt/sherlock/sherlock.py'" >> /home/$username/.bash_aliases
 echo "alias xsstrike='python3 /opt/xsstrike/xsstrike.py'" >> /home/$username/.bash_aliases
+echo "alias newreport='ruby /opt/oscp_report/generate.rb'" >> /home/$username/.bash_aliases
 
 echo -e "\n\n"
 echo "[*] Adding symlinks for wordlists and seclists folders to home directory..."
