@@ -26,12 +26,13 @@ apt full-upgrade -y
 
 echo -e "\n\n"
 echo "[*] Installing pre-reqs..."
-apt install -y git ansible python-pip python3-pip golang-go python-dnspython libpcap-dev libssl-dev libnetfilter-queue-dev pandoc texlive-base p7zip
+apt install -y git ansible python-pip python3-pip golang-go python-dnspython libpcap-dev libssl-dev libnetfilter-queue-dev
+apt install -y pandoc texlive-base p7zip texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
 pip install ldap3
 
 echo -e "\n\n"
 echo "[*] Installing tools from Kali repos..."
-apt install oscanner tnscmd10g flameshot kate firefox-esr ark powershell
+apt install -y oscanner tnscmd10g flameshot kate firefox-esr ark powershell
 
 echo -e "\n\n"
 echo "[*] Cloning and installing the BrashEndeavours/hotwax repo..."
@@ -169,13 +170,14 @@ echo "alias autorecon='python3 /opt/autorecon/autorecon.py'" >> /home/$username/
 echo "alias evil-winrm='ruby /opt/evil-winrm/evil-winrm.rb'" >> /home/$username/.bash_aliases
 echo "alias sherlock='python3 /opt/sherlock/sherlock.py'" >> /home/$username/.bash_aliases
 echo "alias xsstrike='python3 /opt/xsstrike/xsstrike.py'" >> /home/$username/.bash_aliases
-echo "alias newreport='ruby /opt/oscp_report/generate.rb'" >> /home/$username/.bash_aliases
+echo "alias newreport='cp /opt/oscp_report/src/OSCP-exam-report-template_whoisflynn_v3.2.md notes.md'" >> /home/$username/.bash_aliases
 
 echo -e "\n\n"
 echo "[*] Adding symlinks for wordlists and seclists folders to home directory..."
 cd /home/$username
 ln -s /usr/share/wordlists wordlists
 ln -s /usr/share/seclists seclists
+ln -s /htb htb
 
 echo -e "\n\n"
 echo "[*] All done! Be sure to reboot the VM before using."
